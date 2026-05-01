@@ -117,6 +117,22 @@ public class MiscStep : IStep
             // quest
             Plugin.package.completed_quests = IStep.ConsumeBitArray(questManager->CompletedQuestsBitArray);
 
+            // Decode bitarray into resolved Excel Quest row IDs:
+            // bit at global index n -> short_id n, full row id = n + 0x10000 (client truncates QuestId to 16 bits).
+            var resolved = new List<uint>();
+            var cqBytes = Plugin.package.completed_quests;
+            for (int byteIdx = 0; byteIdx < cqBytes.Count; byteIdx++)
+            {
+                byte b = cqBytes[byteIdx];
+                if (b == 0) continue;
+                for (int bitIdx = 0; bitIdx < 8; bitIdx++)
+                {
+                    if ((b & (1 << bitIdx)) != 0)
+                        resolved.Add((uint)(byteIdx * 8 + bitIdx) + 0x10000U);
+                }
+            }
+            Plugin.package.completed_quests_resolved = resolved;
+
             // volatile
             Plugin.package.position_x = Plugin.ObjectTable.LocalPlayer.Position.X;
             Plugin.package.position_y = Plugin.ObjectTable.LocalPlayer.Position.Y;

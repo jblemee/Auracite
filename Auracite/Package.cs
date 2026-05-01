@@ -200,6 +200,7 @@ public class CharacterJson
 
     // quest
     public List<byte> completed_quests;
+    public List<uint> completed_quests_resolved = new List<uint>();
     public List<ActiveQuest> active_quests = new List<ActiveQuest>();
 
     // volatile
