@@ -80,7 +80,7 @@ public class Appearance
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public class ActiveQuest
 {
-    public ushort id;
+    public uint id;
     public byte sequence;
     public byte flags;
     public byte accept_class_job;
