@@ -78,6 +78,19 @@ public class Appearance
 }
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
+public class ActiveQuest
+{
+    public ushort id;
+    public byte sequence;
+    public byte flags;
+    public byte accept_class_job;
+    public bool is_hidden;
+    public bool is_priority;
+    public List<bool> todo_checked;
+    public string kind;
+}
+
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public class CharacterJson
 {
     public string name;
@@ -187,6 +200,7 @@ public class CharacterJson
 
     // quest
     public List<byte> completed_quests;
+    public List<ActiveQuest> active_quests = new List<ActiveQuest>();
 
     // volatile
     public float position_x;
