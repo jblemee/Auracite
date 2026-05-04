@@ -15,7 +15,7 @@ public sealed class Plugin : IDalamudPlugin
     private readonly WindowSystem WindowSystem = new("Auracite");
 
     private readonly List<Type> _steps =
-        [typeof(AppearanceStep), typeof(InventoryStep), typeof(MiscStep), typeof(ActiveQuestsStep), typeof(PlaytimeStep), typeof(AdventurerPlateStep), typeof(TitleStep), typeof(EndStep)];
+        [typeof(AppearanceStep), typeof(InventoryStep), typeof(MiscStep), typeof(ActiveQuestsStep), typeof(HuntingLogStep), typeof(PlaytimeStep), typeof(AdventurerPlateStep), typeof(TitleStep), typeof(EndStep)];
 
     private int _stepIndex;
 

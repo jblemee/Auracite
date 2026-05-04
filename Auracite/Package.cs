@@ -91,6 +91,29 @@ public class ActiveQuest
 }
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
+public class HuntingLogTarget
+{
+    public byte count;
+}
+
+[SuppressMessage("ReSharper", "InconsistentNaming")]
+public class HuntingLogRank
+{
+    public int rank;
+    public List<HuntingLogTarget> targets = new List<HuntingLogTarget>();
+}
+
+[SuppressMessage("ReSharper", "InconsistentNaming")]
+public class HuntingLogCategory
+{
+    public int index;
+    public string? name;
+    public long flags;
+    public int current_rank;
+    public List<HuntingLogRank> ranks = new List<HuntingLogRank>();
+}
+
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public class CharacterJson
 {
     public string name;
@@ -202,6 +225,9 @@ public class CharacterJson
     public List<byte> completed_quests;
     public List<uint> completed_quests_resolved = new List<uint>();
     public List<ActiveQuest> active_quests = new List<ActiveQuest>();
+
+    // hunting log
+    public List<HuntingLogCategory> hunting_log = new List<HuntingLogCategory>();
 
     // volatile
     public float position_x;
